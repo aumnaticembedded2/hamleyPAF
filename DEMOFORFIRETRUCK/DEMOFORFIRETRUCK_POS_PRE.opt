@@ -1,0 +1,161 @@
+              
+CHIP TYPE : TRSP5165A-S16C
+Program ROM Size : 8K X 12 bits
+Data ROM Size : 496K X 8 bits
+User SRAM Size : (256+2) X 4 bits
+              
+Interrupt : PWM
+Subroutine : YES, 1 level
+Timer : none
+PWM : 12 bits, signed
+DAC : YES
+Multiplier : none
+              
+PD50KPA0 : N
+PD50KPA1 : N
+PD50KPA2 : N
+PD50KPA3 : N
+              
+PD1MPA0 : Y
+PD1MPA1 : Y
+PD1MPA2 : Y
+PD1MPA3 : Y
+              
+WAKEUPBA0 : Y
+WAKEUPBA1 : Y
+WAKEUPBA2 : Y
+WAKEUPBA3 : Y
+              
+PD50KPB0 : N
+PD50KPB1 : N
+PD50KPB2 : N
+PD50KPB3 : N
+              
+PD1MPB0 : Y
+PD1MPB1 : Y
+PD1MPB2 : Y
+PD1MPB3 : Y
+              
+WAKEUPBB0 : Y
+WAKEUPBB1 : N
+WAKEUPBB2 : Y
+WAKEUPBB3 : Y
+              
+FHC0 : N
+FHC1 : N
+FHC2 : N
+FHC3 : N
+              
+RSTBPC3 : N
+OTPLOCK : N
+WDGENB : Y
+HALTENB : Y
+              
+RSTBPB3 : N
+PD50KPD0 : N
+PD50KPD1 : N
+PD50KPD2 : N
+              
+PD50KPD3 : N
+PD1MPD0 : Y
+PD1MPD1 : Y
+PD1MPD2 : Y
+              
+PD1MPD3 : Y
+WAKEUPBD0 : N
+WAKEUPBD1 : N
+WAKEUPBD2 : N
+              
+WAKEUPBD3 : N
+PD50KPE0 : Y
+PD50KPE1 : Y
+PD50KPE2 : Y
+              
+PD50KPE3 : Y
+PD1MPE0 : N
+PD1MPE1 : N
+PD1MPE2 : N
+              
+PD1MPE3 : N
+WAKEUPBE0 : N
+WAKEUPBE1 : N
+WAKEUPBE2 : N
+              
+WAKEUPBE3 : N
+FHD0 : N
+FHD1 : N
+FHD2 : N
+              
+FHD3 : N
+LOPENC0 : N
+LOPENC1 : N
+LOPENC2 : N
+              
+LOPENC3 : N
+LOPEND0 : N
+LOPEND1 : N
+LOPEND2 : N
+              
+LOPEND3 : N
+F38K : N
+PD220K : N
+RCWK : N
+              
+PWM64K : N
+DACEN : N
+OPEN : N
+RXEN : N
+              
+BZWK : N
+PDOPT : Y
+PAOPT0 : Y
+PAOPT1 : Y
+              
+PAOPT2 : Y
+PAOPT3 : Y
+PBOPT0 : Y
+PBOPT1 : Y
+              
+PBOPT2 : Y
+PBOPT3 : Y
+PWM10S : N
+PWM12S : Y
+              
+CMPEN1 : N
+CMPEN2 : N
+PCEIO : N
+PCESEL : N
+              
+OTPADJ : N
+BIWK : N
+B1RZ : Y
+B3RZ : Y
+              
+HDEN : N
+OTPREV : N
+DMD_CYCLE : N
+RECEN : N
+              
+PROM8KENB : N
+PROM16KENB : N
+LVR_OPT0 : N
+LVR_OPT1 : N
+              
+INTMSK : N
+MAHOPT0 : Y
+MAHOPT1 : Y
+MAHOPT2 : N
+              
+MAHOPT3 : N
+PCHOPT0 : Y
+PCHOPT1 : Y
+PCHOPT2 : Y
+              
+PCHOPT3 : Y
+DMA3OPT0 : Y
+DMA3OPT1 : Y
+DMA3OPT2 : Y
+              
+DMA3OPT3 : Y
+DMA4OPT0 : Y
+DMA4OPT1 : Y
