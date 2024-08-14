@@ -1,0 +1,243 @@
+;****************************************************************************
+;   Tritan High-level Speech Language IDE Demo Code , TRITAN Technology Inc.  
+;                        How to use Multi-key? 
+;****************************************************************************
+[Device]        	;; Select a chip type here.
+//-----------------------------------------------------------------------------
+//TRSP5165A-S16C,8K X 12 bits,496K X 8 bits,(256+2) X 4 bits,12I/O
+TRSP5165A-S16C
+;; ////////////////////////////////////////////////////////////////////////////
+[Random]        	;; Declare random variable here.
+
+;-----------------------------------------------------------------------------
+[Key]
+direct = 8		;; number of direct key
+debounce = 8		;; debounce time 4*n(ms) from 1~15
+priority = abde
+;-----------------------------------------------------------------------------
+[ultraio]
+PortD.B0 = UIO.Ch0 	;<<Add by EasyCode>>
+PortD.B0 = UIO.Ch1 	;<<Add by EasyCode>>
+PortD.B3 = UIO.Ch2 	;<<Add by EasyCode>>
+PortD.B3 = UIO.Ch3 	;<<Add by EasyCode>>
+
+;----------------------------------------------------------------------------
+[SoundInit]     	;; sound initial
+ch0freq = 8k&4  	;<<Add by EasyCode>>
+
+
+
+
+
+
+;-----------------------------------------------------------------------------
+[Files]         	;; Add sound file here.
+"slowsiren_8000_4-12.Uio" 	;<<Add by EasyCode>>
+"fastsiren_8000_4-12.Uio" 	;<<Add by EasyCode>>
+"fastsiren_8000_4-12.Uio" 	;<<Add by EasyCode>>
+"slowsiren_8000_4-12.Uio" 	;<<Add by EasyCode>>
+	;<<Add by EasyCode>>
+"ambulancesiren_16000_4-12.Uio" 	;<<Add by EasyCode>>
+"2ndsiren_16000_4-12.Uio" 	;<<Add by EasyCode>>
+"ambulancesiren_16000_4-12.Uio" 	;<<Add by EasyCode>>
+
+
+;-----------------------------------------------------------------------------
+[Variable]  
+int4 but
+int4 but1  	;; Variable declaration
+int4 COUNT
+
+
+;-----------------------------------------------------------------------------
+[DkeyStates]     	;; Direct Key states declaration
+Key_EnAll:: x x x button1 x x button2
+;-----------------------------------------------------------------------------
+[SkeyStates]   		;; Scan Key states declaration
+
+;-----------------------------------------------------------------------------
+[OutputStates]   	;; Output states 
+
+;-----------------------------------------------------------------------------
+[Paths]         	;; Pathes declaration
+init::           	;; Powen Default initial
+Wakeup_entry:    	;; Wake-Up Entry
+         Key_EnAll
+	
+	 but=0
+	 but1=0
+	 COUNT=1
+
+
+;-----------------------------------------------------------------------------
+
+{play}p:: 	    
+	   
+            "fastsiren_8000_4-12.Uio"@Ch0 		
+	    	wait(ch0@stop)            		
+	    	 ;delay(2s)
+	    	 {ledoff1}p	   
+		portD.B1=1  
+		    
+{playme}p::
+
+		"slowsiren_8000_4-12.Uio"@ch0    
+	      ;"slowsiren_8000_4-12.Uio"@ch0
+	     	    wait(ch0@stop) 
+	     	     ; delay(2s)
+	     	      {ledoff1}p
+	     	     portD.B1=1
+		     	
+
+{Display}p::
+	
+		;ledoffflag=1
+ledonflag:
+	
+	      portD.B1=0
+              ;portD.B2=0
+              ;portD.B3=0
+              delay(250ms)
+              portD.B1=1
+              ;portD.B2=1
+              ;portD.B3=1
+              delay(250ms)
+              portD.B1=1
+              ;portD.B2=1
+              ;portD.B3=1
+              delay(250ms)
+              portD.B1=0
+              ;portD.B2=0
+              ;portD.B3=0
+              delay(250ms)
+              portD.B1=1
+              ;portD.B2=1
+              ;portD.B3=1
+              delay(250ms)
+              portD.B1=0
+              ;portD.B2=0
+              ;portD.B3=0
+              delay(250ms)
+              portD.B1=1
+              ;portD.B2=1
+              ;portD.B3=1
+              delay(250ms)
+              portD.B1=0
+              ;portD.B2=0
+              ;portD.B3=0
+              delay(250ms)
+              portD.B1=1
+              ;portD.B2=1
+              ;portD.B3=1
+              delay(250ms)
+              ledonflag
+              delay(4s)
+              stoppathd
+	
+		/*PortD = COUNT
+		COUNT==1 ?: DIR=0
+		COUNT==8 ?: DIR=1
+		DIR==0 ?: COUNT=COUNT<<1 else COUNT=COUNT>>1
+		COUNT=COUNT+1
+		COUNT>=8?:stoppathd
+		delay(1s)
+		*/;ledonflag
+stoppathd: 
+	        {ledoff}p
+	        
+{ledonlyon}p::
+         	
+   ledonlyflag1:
+      
+		portD.B1=0
+                delay(4s)
+               	delay(4s)
+               	delay(4s)
+               	delay(4s)
+               	stopthat
+               	
+stopthat:
+		     	
+                {ledoff}p
+button1::
+		but=but+1
+		but==1?:{play}p
+		but==2?:{playme}p
+		but==3?:{ledoff1}p
+  		
+		
+button2::
+		but1=but1+1
+		but1==1?:{ledonlyon}p
+		but1==2?:{Display}p
+		but1==3?:{ledoff2}p
+		
+	       
+
+{ledoff}p::
+                                         
+       countit:
+       
+                 ch0playing==0?:ledoffkar 
+                  delay(50ms)
+                   countit
+	ledoffkar:
+		    stop({ledonlyon}p)
+	            stop({Display}p)
+	            portD=0x0F
+	            stop@ch0
+	            stop({play}p)
+	            stop({playme}p)
+	            delay(4s)
+	            delay(4s)
+	            portD=0x0F
+	            end
+	          
+{ledoff1}p::
+		    stop@ch0
+		    ;portD=0x0F
+	            stop({play}p)
+	            stop({playme}p)
+	            ;delay(4s)
+	            delay(2s)
+	            portD=0x0F
+	            end	
+		
+	             
+
+{ledoff2}p::
+
+		stop({ledonlyon}p)
+	        stop({Display}p)
+	         portD=0x0F
+	          ;delay(4s)
+	           delay(2s)
+		   end	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+           
+ 

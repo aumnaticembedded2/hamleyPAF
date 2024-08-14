@@ -1,0 +1,5 @@
+Resource Consume..............
+Resource = total,used,Percent
+SRAM = 256 , 59 , 23
+PROM = 8192 , 2727 , 33
+DROM = 507904 , 80006 , 16
