@@ -182,16 +182,18 @@ button1::
 		but==1?:{play}p
 		but==2?:{playme}p
 		but==3?:{ledoff1}p
-  		
+  		but==4?:{play}p
+		but==5?:{playme}p
+		but==6?:{ledoff1}p
 		
 button2::
 		but1=but1+1
 		but1==1?:{ledonlyon}p
 		but1==2?:{Display}p
 		but1==3?:{ledoff2}p
-		
-	       
-
+		but1==4?:{ledonlyon}p
+	        but1==5?:{Display}p
+	        but1==6?:{ledoff2}p
 {ledoff}p::
                                          
        countit:
@@ -221,7 +223,7 @@ button2::
 		    ;portD=0x0F
 	            stop({play}p)
 	            stop({playme}p)
-	            delay(1s)
+	            delay(4s)
 	            ;{ledoff}p
 	            
 	          
@@ -240,8 +242,8 @@ button2::
 	          portD.B1=1
                   portD.B2=1
                   portD.B3=1
-	         delay(2s)
-	         {ledoff}p
+	         delay(4s)
+	         ;{ledoff}p
 	            
 	;	delay(4s)
 	 ;       delay(4s)
